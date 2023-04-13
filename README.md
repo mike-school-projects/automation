@@ -20,7 +20,10 @@ Duplicate entries are not allowed.
 
 
 ## Links and Resources
-N/A
+
+[RFC 3696](https://www.rfc-editor.org/rfc/rfc3696)
+
+
 
 ## Setup
 
@@ -31,6 +34,8 @@ Install per requirements.txt
 From root directory, run:
 
 python -m automation.automation
+
+Will create two files in the automation\assets folder for email-contacts.txt and phone-contacts.txt
 
 ## How to use your library (where applicable)
 N/A

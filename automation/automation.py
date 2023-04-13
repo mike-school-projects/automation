@@ -160,8 +160,6 @@ def save_to_file(list, filename):
     with open(filename, 'w+') as f:
         for word in list:
             f.write(f'{word}\n')
-    # use shutil to move file to desired folder.  Time: 1:44
-
 
 if __name__ == "__main__":
     main('./automation/assets/potential-contacts.txt')

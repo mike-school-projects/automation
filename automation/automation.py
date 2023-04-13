@@ -33,6 +33,10 @@ def main(filename):
     good_emails = remove_duplicates(good_emails)
     good_phone_numbers = remove_duplicates(good_phone_numbers)
 
+    # Sort
+    good_emails.sort()
+    good_phone_numbers.sort()
+
     # Add results to text file
     save_to_file(good_emails, './automation/assets/email-contacts.txt')
     save_to_file(good_phone_numbers, './automation/assets/phone-contacts.txt')

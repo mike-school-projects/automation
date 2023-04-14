@@ -126,22 +126,25 @@ def validate_phone(input_phone_num):
         # Format main
         main = re.sub("[^0-9]", "", main)
 
-        # keep items if main length is 7 or >= 10
-        if not(len(main) == 7 or len(main) >= 10):
+        # keep items if main length is 7 or 10
+        if not(len(main) == 7 or len(main) == 10):
             valid_number = False
             bad_phone_num.append(phone_num)
 
         # if 7 digits, add 206 area code
         if len(main) == 7:
+            print(main)
             main = f'206-{main[0:3]}-{main[3:7]}'
 
         # 10 digits
         elif len(main) == 10:
             main = f'{main[0:3]}-{main[3:6]}-{main[6:10]}'
 
-        # > 10 digits (country code)
-        else:
-            main = f'{main[:-10]}-{main[-10:-7]}-{main[-7:-4]}-{main[-4:]}'
+        # Check for valid area code
+        if len(main) > 0:
+            if main[0] == '0' or main[0] == '1':
+                valid_number = False
+                bad_phone_num.append(phone_num)
 
         # Passes all tests - add to good phone number list
         if valid_number is True:

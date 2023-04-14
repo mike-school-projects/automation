@@ -40,6 +40,8 @@ def test_email_local_length():
     expected = []
     assert actual == expected
 
+
+
 # @pytest.mark.skip("TODO")
 def test_phone_happy():
     actual = validate_phone(['8675308',])
@@ -48,36 +50,42 @@ def test_phone_happy():
 
 # @pytest.mark.skip("TODO")
 def test_phone_6_digits():
-    actual = validate_phone(['123456',])
+    actual = validate_phone(['999999',])
     expected = []
     assert actual == expected
 
 # @pytest.mark.skip("TODO")
+def test_phone_7_digits():
+    actual = validate_phone(['9999999',])
+    expected = ['206-999-9999']
+    assert actual == expected
+
+# @pytest.mark.skip("TODO")
 def test_phone_8_digits():
-    actual = validate_phone(['12345678',])
+    actual = validate_phone(['99999999',])
     expected = []
     assert actual == expected
 
 # @pytest.mark.skip("TODO")
 def test_phone_10_digits():
-    actual = validate_phone(['1234567890',])
-    expected = ['123-456-7890']
+    actual = validate_phone(['9999999999',])
+    expected = ['999-999-9999']
     assert actual == expected
 
 # @pytest.mark.skip("TODO")
-def test_phone_country_code():
-    actual = validate_phone(['11234567890',])
-    expected = ['1-123-456-7890']
+def test_phone_area_code():
+    actual = validate_phone(['0009999999',])
+    expected = []
     assert actual == expected
 
 # @pytest.mark.skip("TODO")
 def test_phone_extension():
-    actual = validate_phone(['11234567890x12345',])
-    expected = ['1-123-456-7890x12345']
+    actual = validate_phone(['9994567890x12345',])
+    expected = ['999-456-7890x12345']
     assert actual == expected
 
 # @pytest.mark.skip("TODO")
 def test_phone_garbage():
-    actual = validate_phone([')(*$asdf11234567890asdf',])
-    expected = ['1-123-456-7890']
+    actual = validate_phone([')(*$asdf9994567890asdf',])
+    expected = ['999-456-7890']
     assert actual == expected

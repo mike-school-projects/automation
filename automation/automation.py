@@ -56,7 +56,7 @@ def validate_email(potential_emails):
 
     for address in potential_emails:
         valid_email = True
-        bad_characters = '(),:"";<>[\]'
+        bad_characters = '(),:"";<>[]"\"'
 
         # 1 and only @ exists
         sum_of_at = 0
@@ -133,7 +133,6 @@ def validate_phone(input_phone_num):
 
         # if 7 digits, add 206 area code
         if len(main) == 7:
-            print(main)
             main = f'206-{main[0:3]}-{main[3:7]}'
 
         # 10 digits
@@ -143,6 +142,18 @@ def validate_phone(input_phone_num):
         # Check for valid area code
         if len(main) > 0:
             if main[0] == '0' or main[0] == '1':
+                valid_number = False
+                bad_phone_num.append(phone_num)
+
+        # Check for service codes x11
+        if len(main) > 2:
+            if main[1] == '1' and main[2] == '1':
+                valid_number = False
+                bad_phone_num.append(phone_num)
+
+        # Check for area code x9x
+        if len(main) > 1:
+            if main[1] == '9':
                 valid_number = False
                 bad_phone_num.append(phone_num)
 
